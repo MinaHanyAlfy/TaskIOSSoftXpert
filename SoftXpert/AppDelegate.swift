@@ -18,7 +18,7 @@ var window: UIWindow?
         let window = UIWindow(frame: applicationFrame )
 
       
-            let nav = UINavigationController(rootViewController: ViewController())
+            let nav = UINavigationController(rootViewController: HomeViewController())
             window.rootViewController = nav
     
         window.makeKeyAndVisible()
