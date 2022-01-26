@@ -22,7 +22,11 @@ class NetworkLayer {
             print(APICase.body)
         }
      // request.httpBody
+        request.setValue("gzip, deflate, br", forHTTPHeaderField: "Accept-Encoding")
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("PostmanRuntime/7.28.4", forHTTPHeaderField: "User-Agent")
+        request.setValue("keep-alive", forHTTPHeaderField: "Connection")
+        request.setValue("*/*", forHTTPHeaderField: "Accept")
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let error =  error {
                 completed((.failure(.InvalidData)))
@@ -36,10 +40,10 @@ class NetworkLayer {
                 completed((.failure(.InvalidResponse)))
                 return
             }
-            let decoder = JSONDecoder()
+           
             do
             {
-                
+                let decoder = JSONDecoder()
 //                decoder.keyDecodingStrategy = .convertFromSnakeCase
                 let results = try decoder.decode(M.self, from: data)
                 

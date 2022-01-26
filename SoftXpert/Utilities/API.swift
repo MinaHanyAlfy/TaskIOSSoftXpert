@@ -46,7 +46,7 @@ extension API: EndPoint{
     var path: String {
         switch self {
         case .getRecipe:
-            return "recipes"
+            return "recipes/v2"
         }
     }
     
